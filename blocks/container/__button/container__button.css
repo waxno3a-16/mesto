@@ -1,0 +1,12 @@
+.container__button {
+  width: 22px;
+  height: 19px;
+  box-shadow: none;
+  border: none;
+  background-color: #fff;
+  background-image: url(../../../images/Group.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  align-self: center;
+}

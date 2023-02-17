@@ -1,0 +1,5 @@
+.container__name-area {
+  margin: 25px 15px 31px 25px;
+  display: flex;
+  justify-content: space-between;
+}

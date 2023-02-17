@@ -15,6 +15,7 @@
 @import url(../blocks/container/__element/container__element.css);
 @import url(../blocks/container/__element-name/container__element-name.css);
 @import url(../blocks/container/__image/container__image.css);
-@import url(../blocks/container/__btn-like/container__btn-like.css);
+@import url(../blocks/container/__button/container__button.css);
+@import url(../blocks/container/__name-area/container__name-area.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
