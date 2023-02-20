@@ -5,3 +5,10 @@
   line-height: 22px;
   margin-top: 10px;
 }
+
+@media (max-width: 672px) {
+  .profile__descript {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

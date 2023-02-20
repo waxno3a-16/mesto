@@ -5,3 +5,26 @@
   column-gap: 30px;
   margin-bottom: 46px;
 }
+
+@media (max-width: 1280px) {
+  .profile {
+    margin: 42px auto 36px;
+  }
+}
+
+@media (max-width: 900px) {
+  .profile {
+    margin: 42px 48px 36px;
+  }
+}
+
+
+@media (max-width: 672px) {
+  .profile {
+    margin: 42px auto 36px;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 26px;
+    flex-wrap: wrap;
+  }
+}

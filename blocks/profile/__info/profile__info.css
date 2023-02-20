@@ -4,3 +4,9 @@
   flex-wrap: wrap;
   align-self: center;
 }
+
+@media (max-width: 672px) {
+  .profile__info {
+    justify-content: center;
+  }
+}

@@ -4,3 +4,17 @@
   font-weight: 500;
   line-height: 42px;
 }
+
+@media (max-width: 900px) {
+  .profile__name {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+
+@media (max-width: 672px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+  }
+}

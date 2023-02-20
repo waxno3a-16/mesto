@@ -10,3 +10,12 @@
   cursor: pointer;
   align-self: center;
 }
+
+.container__button:hover {
+  opacity: 0.6;
+}
+
+.container__button:active {
+  background-image: url(../../../images/Union.png);
+}
+

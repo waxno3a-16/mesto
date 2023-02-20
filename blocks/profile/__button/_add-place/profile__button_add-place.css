@@ -5,3 +5,10 @@
   align-self: center;
   margin-left: auto;
 }
+
+@media (max-width: 672px) {
+  .profile__button_add-place {
+    margin: 0;
+    width: 282px;
+  }
+}

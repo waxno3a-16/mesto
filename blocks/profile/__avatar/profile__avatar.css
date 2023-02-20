@@ -3,3 +3,10 @@
   height: 120px;
   border-radius: 90px;
 }
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .profile__avatar {
+    width: 90px;
+    height: 90px;
+  }
+}
