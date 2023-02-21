@@ -15,3 +15,10 @@
 .popup__submit:hover {
   opacity: 0.6;
 }
+
+@media (max-width: 520px) {
+  .popup__submit {
+    width: 238px;
+    height: 46px;
+  }
+}

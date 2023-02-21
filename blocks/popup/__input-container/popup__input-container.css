@@ -4,4 +4,12 @@
   flex-direction: column;
   border: none;
   align-items: center;
+  margin-left: 36px;
+  margin-right: 36px;
+}
+
+@media (max-width: 520px) {
+  .popup__input-container {
+    margin: 0;
+  }
 }
