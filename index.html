@@ -10,71 +10,74 @@
   <header class="header">
     <a href="#"><img class="header__logo" src="images/logo.svg" alt="Логотип"></a>
   </header>
+  <main>
+    <section class="profile">
+      <img class="profile__avatar" src="images/image.jpg" alt="Фото профиля">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button type="button" class="profile__button profile__button_edit"></button>
+        <p class="profile__descript">Исследователь океана</p>
+      </div>
+      <button type="button" class="profile__button profile__button_add-place"></button>
+    </section>
+    <section class="container" aria-label="Фотографии">
+      <div class="container__element">
+        <img class="container__image" src="images/vladivostok.jpg" alt="Владивосток">
+        <div class="container__name-area">
+          <h2 class="container__element-name">Владивосток</h2>
+          <button type="button" class="container__button"></button>
+        </div>
+      </div>
+      <div class="container__element">
+        <img class="container__image" src="images/novosibirsk.jpg" alt="Новосибирск">
+        <div class="container__name-area">
+          <h2 class="container__element-name">Новосибирск</h2>
+          <button type="button" class="container__button"></button>
+        </div>
+      </div>
+      <div class="container__element">
+        <img class="container__image" src="images/sochi.jpg" alt="Сочи">
+        <div class="container__name-area">
+          <h2 class="container__element-name">Сочи</h2>
+          <button type="button" class="container__button"></button>
+        </div>
+      </div>
+      <div class="container__element">
+        <img class="container__image" src="images/stpetersburg.jpg" alt="Санкт-Петербург">
+        <div class="container__name-area">
+          <h2 class="container__element-name">Санкт-Петербург</h2>
+          <button type="button" class="container__button"></button>
+        </div>
+      </div>
+      <div class="container__element">
+        <img class="container__image" src="images/moscow.jpg" alt="Москва">
+        <div class="container__name-area">
+          <h2 class="container__element-name">Москва</h2>
+          <button type="button" class="container__button"></button>
+        </div>
+      </div>
+      <div class="container__element">
+        <img class="container__image" src="images/kaliningrad.jpg" alt="Калининград">
+        <div class="container__name-area">
+          <h2 class="container__element-name">Калиниград</h2>
+          <button type="button" class="container__button"></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <form class="popup__container">
+      <button type="button" class="popup__close-button"></button>
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <fieldset class="popup__input-container">
+        <input type="text" class="popup__input-name" placeholder="Жак-Ив Кусто">
+        <input type="text" class="popup__input-descript" placeholder="Исследователь океана">
+        <button type="submit" class="popup__submit">Сохранить</button>
+      </fieldset>
+    </form>
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
-<main>
-  <section class="profile">
-    <img class="profile__avatar" src="images/image.jpg" alt="Фото профиля">
-    <div class="profile__info">
-      <h1 class="profile__name">Жак-Ив Кусто<button type="button" class="profile__button profile__button_edit" title="Редактировать профиль"></button></h1>
-      <p class="profile__descript">Исследователь океана</p>
-    </div>
-    <button type="button" class="profile__button profile__button_add-place" title="Добавить фотографию"></button>
-  </section>
-  <section class="container" aria-label="Фотографии">
-    <div class="container__element">
-      <img class="container__image" src="images/vladivostok.jpg" alt="Владивосток">
-      <div class="container__name-area">
-        <h2 class="container__element-name">Владивосток</h2>
-        <button type="button" class="container__button"></button>
-      </div>
-    </div>
-    <div class="container__element">
-      <img class="container__image" src="images/novosibirsk.jpg" alt="Новосибирск">
-      <div class="container__name-area">
-        <h2 class="container__element-name">Новосибирск</h2>
-        <button type="button" class="container__button"></button>
-      </div>
-    </div>
-    <div class="container__element">
-      <img class="container__image" src="images/sochi.jpg" alt="Сочи">
-      <div class="container__name-area">
-        <h2 class="container__element-name">Сочи</h2>
-        <button type="button" class="container__button"></button>
-      </div>
-    </div>
-    <div class="container__element">
-      <img class="container__image" src="images/stpetersburg.jpg" alt="Санкт-Петербург">
-      <div class="container__name-area">
-        <h2 class="container__element-name">Санкт-Петербург</h2>
-        <button type="button" class="container__button"></button>
-      </div>
-    </div>
-    <div class="container__element">
-      <img class="container__image" src="images/moscow.jpg" alt="Москва">
-      <div class="container__name-area">
-        <h2 class="container__element-name">Москва</h2>
-        <button type="button" class="container__button"></button>
-      </div>
-    </div>
-    <div class="container__element">
-      <img class="container__image" src="images/kaliningrad.jpg" alt="Калининград">
-      <div class="container__name-area">
-        <h2 class="container__element-name">Калиниград</h2>
-        <button type="button" class="container__button"></button>
-      </div>
-    </div>
-  </section>
-</main>
-<footer class="footer">
-  <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
-</footer>
-<div class="popup">
-  <form class="popup__container">
-    <button type="button" class="popup__close-button"></button>
-    <h2 class="popup__heading">Редактировать профиль</h2>
-    <fieldset class="popup__input-container">
-      <input type="text" class="popup__input" placeholder="Жак-Ив Кусто">
-      <input type="text" class="popup__input" placeholder="Исследователь океана">
-      <button type="button" class="popup__submit">Сохранить</button>
-    </fieldset>
-  </form>
