@@ -15,52 +15,52 @@
       <img class="profile__avatar" src="images/image.jpg" alt="Фото профиля">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button type="button" class="profile__button profile__button_edit"></button>
+        <button type="button" class="profile__button profile__button_function_edit" aria-label="Редактировать профиль"></button>
         <p class="profile__descript">Исследователь океана</p>
       </div>
-      <button type="button" class="profile__button profile__button_add-place"></button>
+      <button type="button" class="profile__button profile__button_function_add-place" aria-label="Добавить фотографии"></button>
     </section>
     <section class="container" aria-label="Фотографии">
       <div class="container__element">
         <img class="container__image" src="images/vladivostok.jpg" alt="Владивосток">
         <div class="container__name-area">
           <h2 class="container__element-name">Владивосток</h2>
-          <button type="button" class="container__button"></button>
+          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
       <div class="container__element">
         <img class="container__image" src="images/novosibirsk.jpg" alt="Новосибирск">
         <div class="container__name-area">
           <h2 class="container__element-name">Новосибирск</h2>
-          <button type="button" class="container__button"></button>
+          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
       <div class="container__element">
         <img class="container__image" src="images/sochi.jpg" alt="Сочи">
         <div class="container__name-area">
           <h2 class="container__element-name">Сочи</h2>
-          <button type="button" class="container__button"></button>
+          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
       <div class="container__element">
         <img class="container__image" src="images/stpetersburg.jpg" alt="Санкт-Петербург">
         <div class="container__name-area">
           <h2 class="container__element-name">Санкт-Петербург</h2>
-          <button type="button" class="container__button"></button>
+          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
       <div class="container__element">
         <img class="container__image" src="images/moscow.jpg" alt="Москва">
         <div class="container__name-area">
           <h2 class="container__element-name">Москва</h2>
-          <button type="button" class="container__button"></button>
+          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
       <div class="container__element">
         <img class="container__image" src="images/kaliningrad.jpg" alt="Калининград">
         <div class="container__name-area">
           <h2 class="container__element-name">Калиниград</h2>
-          <button type="button" class="container__button"></button>
+          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
     </section>
@@ -69,15 +69,17 @@
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
   <div class="popup">
-    <form class="popup__container">
-      <button type="button" class="popup__close-button"></button>
+    <div class="popup__container">
+      <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <fieldset class="popup__input-container">
-        <input type="text" class="popup__input-name" placeholder="Жак-Ив Кусто">
-        <input type="text" class="popup__input-descript" placeholder="Исследователь океана">
-        <button type="submit" class="popup__submit">Сохранить</button>
-      </fieldset>
-    </form>
+      <form class="popup__form" name="prfl">
+        <fieldset class="popup__input-container">
+          <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Имя">
+          <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Должность">
+          <button type="submit" class="popup__submit">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
   </div>
   <script src="./scripts/index.js"></script>
 </body>

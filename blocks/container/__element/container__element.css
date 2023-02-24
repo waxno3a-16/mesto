@@ -2,7 +2,6 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 282px;
-  height: 361px;
 }

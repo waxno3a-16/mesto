@@ -1,0 +1,16 @@
+.profile__button_function_add-place {
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../../images/cross.svg);
+  align-self: center;
+  margin-left: auto;
+  border: 2px solid #fff;
+}
+
+@media (max-width: 672px) {
+  .profile__button_function_add-place {
+    margin: 0;
+    width: 282px;
+    background-image: url(../../../../images/cross-small.svg);
+  }
+}

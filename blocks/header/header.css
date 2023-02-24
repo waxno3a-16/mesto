@@ -3,15 +3,9 @@
   max-width: 880px;
   padding-top: 45px;
   padding-bottom: 41px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7); 
   margin-bottom: 40px;
 }
-
-/**@media (max-width: 1280px) {
-  .header {
-    margin: 0 48px;
-  }
-}**/
 
 @media (max-width: 900px) {
   .header {
@@ -21,7 +15,7 @@
 
 @media (max-width: 600px) {
   .header {
-    margin: 0 27px;
+    margin: 0;
     padding-top: 28px;
     padding-bottom: 32px;
   }

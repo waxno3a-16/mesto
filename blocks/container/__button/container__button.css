@@ -3,8 +3,8 @@
   height: 19px;
   box-shadow: none;
   border: none;
-  background-color: #fff;
-  background-image: url(../../../images/Group.png);
+  background-color: transparent;
+  background-image: url(../../../images/Like_white.svg);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
@@ -12,10 +12,10 @@
 }
 
 .container__button:hover {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .container__button:active {
-  background-image: url(../../../images/Union.png);
+  background-image: url(../../../images/like_dark.svg);
 }
 
