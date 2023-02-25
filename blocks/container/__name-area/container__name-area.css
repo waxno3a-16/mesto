@@ -3,3 +3,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 581px) {
+  .container__name-area {
+    margin: 25px 15px 25px 25px
+  }
+}

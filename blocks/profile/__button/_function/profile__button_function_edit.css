@@ -11,5 +11,6 @@
   .profile__button_function_edit {
     width: 18px;
     height: 18px;
+    margin-left: 10px;
   }
 }

@@ -4,7 +4,7 @@
   background-color: transparent;
   box-shadow: none;
   border: none;
-  background-image: url(../../../images/CloseIcon.png);
+  background-image: url(../../../images/Close-Icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
@@ -23,7 +23,7 @@
     width: 20px;
     height: 20px;
     right: 0;
-    background-image: url(../../../images/CloseIcon-sm.png);
+    background-image: url(../../../images/Close-Icon-small.svg);
   }
 }
   

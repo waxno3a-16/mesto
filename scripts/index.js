@@ -5,7 +5,7 @@ let nameInput = document.querySelector('.popup__input_info_name');
 let jobInput = document.querySelector('.popup__input_info_descript');
 let userName = document.querySelector('.profile__name');
 let userPosition = document.querySelector('.profile__descript');
-let formElement = document.querySelector('.popup__container');
+let formElement = document.querySelector('.popup__form');
 
 //открываем попап//
 function openPopup() {
@@ -24,7 +24,7 @@ function handleFormSubmit (evt) {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userPosition.textContent = jobInput.value;
-  profileEdit.classList.remove('popup_opened');
+  closePopup();
 }
 
 profileEditButton.addEventListener('click', openPopup);
