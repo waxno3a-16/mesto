@@ -20,15 +20,51 @@
       </div>
       <button type="button" class="profile__button profile__button_function_add-place" aria-label="Добавить фотографии"></button>
     </section>
-    <section class="container" aria-label="Фотографии">
+    <template id="cardTemplate" class="container" aria-label="Фотографии">
       <div class="container__element">
-        <img class="container__image" src="images/vladivostok.jpg" alt="Владивосток">
+        <img class="container__image">
         <div class="container__name-area">
-          <h2 class="container__element-name">Владивосток</h2>
+          <h2 class="container__element-name"></h2>
           <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
-      <div class="container__element">
+    </template>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <form class="popup__form" name="prfl">
+        <fieldset class="popup__input-container">
+          <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Имя">
+          <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Должность">
+          <button type="submit" class="popup__submit">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div id="addPopup" class="popup">
+    <div class="popup__container">
+      <button id="closeAddPopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
+      <h2 class="popup__heading">Новое место</h2>
+      <form class="popup__form" name="prfl">
+        <fieldset class="popup__input-container">
+          <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Название">
+          <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Ссылка на картинку">
+          <button type="submit" class="popup__submit">Создать</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+</html>
+
+
+ <!--<div class="container__element">
         <img class="container__image" src="images/novosibirsk.jpg" alt="Новосибирск">
         <div class="container__name-area">
           <h2 class="container__element-name">Новосибирск</h2>
@@ -63,24 +99,4 @@
           <button type="button" class="container__button" aria-label="Поставить лайк"></button>
         </div>
       </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
-  </footer>
-  <div class="popup">
-    <div class="popup__container">
-      <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
-      <h2 class="popup__heading">Редактировать профиль</h2>
-      <form class="popup__form" name="prfl">
-        <fieldset class="popup__input-container">
-          <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Имя">
-          <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Должность">
-          <button type="submit" class="popup__submit">Сохранить</button>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-  <script src="./scripts/index.js"></script>
-</body>
-</html>
+    </section>-->
