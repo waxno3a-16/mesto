@@ -9,10 +9,9 @@ let formElement = document.querySelector('.popup__form');
 let popupAdd = document.querySelector('#addPopup');
 let profileAddButton = document.querySelector('.profile__button_function_add-place');
 let profileCloseAddButton = document.querySelector('#closeAddPopup');
-let picName = document.querySelector('.container__element-name');
-let picLink = document.querySelector('.container__image');
-let cardNameInput = document.querySelector('.popup__input_info_name');
-let cardLinkInput = document.querySelector('.popup__input_info_descript');
+let formElementAdd = document.querySelector('#addPopupForm');
+let cardNameInput = document.querySelector('#addPopupForm input[name="add-name"]');
+let cardLinkInput = document.querySelector('#addPopupForm input[name="add-link"]');
 
 
 //открываем попап редактирования профиля//
@@ -82,6 +81,9 @@ const createCard = (card) => {
   const cardImage = newCard.querySelector('.container__image');
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.alt);
+  let cardLikeButton = newCard.querySelector('.container__button');
+  function likeCard(){cardLikeButton.classList.toggle('container__button_active');};
+  cardLikeButton.addEventListener('click', likeCard);
   return newCard;
 }
 
@@ -95,9 +97,12 @@ initialCards.forEach(data => {renderCard(data, cardsContainer);});
 //изменяем в форме название и ссылку и добавляем новую карточку по клику на сабмит//
 function picFormSubmit (evt) {
   evt.preventDefault();
-  picName.textContent = cardNameInput.value;
-  picLink.textContent = cardLinkInput.value;
-  closePopup();
+  renderCard({
+    name: cardNameInput.value,
+    alt: cardNameInput.value,
+    link: cardLinkInput.value
+  }, cardsContainer);
+  closePopupAdd();
 }
 
 //открываем попап добавления места//
@@ -110,18 +115,9 @@ function closePopupAdd() {
   popupAdd.classList.remove('popup_opened');
 }
 
-
 profileAddButton.addEventListener('click', openPopupAdd);
 profileCloseAddButton.addEventListener('click', closePopupAdd);
+formElementAdd.addEventListener('submit', picFormSubmit);
 
 //добавляем и убираем лайк к карточкам//
-let likeButtons = document.querySelectorAll('.container__button');
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('container__button_active');
-  });
-});
-
-
-
 

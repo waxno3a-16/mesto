@@ -50,10 +50,10 @@
     <div class="popup__container">
       <button id="closeAddPopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Новое место</h2>
-      <form class="popup__form" name="prfl">
+      <form id="addPopupForm" class="popup__form" name="prfl">
         <fieldset class="popup__input-container">
-          <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Название">
-          <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Ссылка на картинку">
+          <input type="text" name="add-name" class="popup__input popup__input_info_name" placeholder="Название">
+          <input type="text" name="add-link" class="popup__input popup__input_info_descript" placeholder="Ссылка на картинку">
           <button type="submit" class="popup__submit">Создать</button>
         </fieldset>
       </form>
