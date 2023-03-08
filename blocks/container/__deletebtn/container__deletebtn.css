@@ -1,0 +1,16 @@
+.container__deletebtn {
+  width: 18px;
+  height: 19px;
+  background-image: url(../../../images/basket.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  align-self: end;
+  border: none;
+  position: absolute;
+  margin-top: 20px;
+  margin-right: 20px;
+
+
+}

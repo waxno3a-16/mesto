@@ -22,7 +22,8 @@
     </section>
     <template id="cardTemplate" class="container" aria-label="Фотографии">
       <div class="container__element">
-        <img class="container__image">
+        <button type="button" class="container__deletebtn" area-label="Удалить карточку"></button>
+        <img type="button" class="container__image">
         <div class="container__name-area">
           <h2 class="container__element-name"></h2>
           <button type="button" class="container__button" aria-label="Поставить лайк"></button>
@@ -34,7 +35,7 @@
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
   <div class="popup">
-    <div class="popup__container">
+    <div class="popup__container popup__container_type_popupform">
       <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
       <form class="popup__form" name="prfl">
@@ -47,7 +48,7 @@
     </div>
   </div>
   <div id="addPopup" class="popup">
-    <div class="popup__container">
+    <div class="popup__container popup__container_type_popupform">
       <button id="closeAddPopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form id="addPopupForm" class="popup__form" name="prfl">
@@ -59,6 +60,12 @@
       </form>
     </div>
   </div>
+  <div id="imagePopup" class="popup">
+    <div class="popup__container popup__container_type_popupimage">
+      <button id="closeImagePopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
+      <div class="popup__image"></div>
+      <h3 class="popup__image-name"></h3>
+    </div>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
