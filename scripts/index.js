@@ -81,9 +81,10 @@ const createCard = (card) => {
   const cardImage = newCard.querySelector('.container__image');
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.alt);
+  
   let cardLikeButton = newCard.querySelector('.container__button');
-  function likeCard(){cardLikeButton.classList.toggle('container__button_active');};//добавляем и убираем лайк к карточкам//
   cardLikeButton.addEventListener('click', likeCard);
+  
   let cardDeleteButton = newCard.querySelector('.container__deletebtn');
   function deleteCard(evt){evt.target.closest('.container__element').remove();};//удаляем карточку по клику на корзину
   cardDeleteButton.addEventListener('click', deleteCard);
@@ -110,6 +111,8 @@ const renderCard = (card, cardsContainer) => {
 }
 
 initialCards.forEach(data => {renderCard(data, cardsContainer);});
+
+function likeCard(){cardLikeButton.classList.toggle('container__button_active');};//добавляем и убираем лайк к карточкам//
 
 //изменяем в форме название и ссылку и добавляем новую карточку по клику на сабмит//
 function cardFormSubmit (evt) {
