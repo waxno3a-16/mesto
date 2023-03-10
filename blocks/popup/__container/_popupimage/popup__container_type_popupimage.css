@@ -6,6 +6,6 @@
 @media (max-width: 580px) {
   .popup__container_type_popupimage {
     justify-content: center;
-    
+    width: 240px;
   }
 }

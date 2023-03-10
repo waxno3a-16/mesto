@@ -8,9 +8,9 @@
 
 @media (max-width: 580px) {
   .popup__image-name {
+    max-width: 240px;
     margin-top: 10px;
     margin-bottom: 0;
-    margin-left: 32px;
   }
 }
    
