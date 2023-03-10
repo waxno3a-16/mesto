@@ -1,7 +1,9 @@
 .popup {
   justify-content: center;
   align-items: center;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  transition: 0.3s linear;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;

@@ -1,6 +1,11 @@
 .popup__container_type_popupimage {
   width: 816px;
-  height: 540px;
+}
+
+@media (max-width: 825px) {
+  .popup__container_type_popupimage {
+    width: 433px;
+  }
 }
 
 @media (max-width: 580px) {

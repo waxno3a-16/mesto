@@ -5,10 +5,17 @@
   background-size: cover;
 }
 
+@media (max-width: 825px) {
+  .popup__image {
+    width: 433px;
+    height: 540px;
+    align-self: center;
+  }
+}
+
 @media (max-width: 580px) {
   .popup__image {
     width: 240px;
     height: 299px;
-    align-self: center;
   }
 }
