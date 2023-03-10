@@ -80,12 +80,8 @@ const createCard = (card) => {
   const cardImage = newCard.querySelector('.container__image');
   cardImage.setAttribute('src', card.link);
   cardImage.setAttribute('alt', card.alt);
-
-  //переменные для функции лайка
   let cardLikeButton = newCard.querySelector('.container__button');
   cardLikeButton.addEventListener('click', likeCard);
-  
-  //переменные для функции удаления карточки
   let cardDeleteButton = newCard.querySelector('.container__deletebtn');
   cardDeleteButton.addEventListener('click', deleteCard);
   
@@ -105,24 +101,6 @@ const renderCard = (card, cardsContainer) => {
 }
 
 initialCards.forEach(data => {renderCard(data, cardsContainer);});
-
-//добавляем и убираем лайк к карточкам//
-function likeCard(evt){evt.target.closest('.container__button').classList.toggle('container__button_active');};
-
-//удаляем карточку по клику на корзину
-function deleteCard(evt){evt.target.closest('.container__element').remove();};
-
-//функция открытия карточки с изображением
-function openCard(evt){
-  let popupImage = document.querySelector('.popup__image');
-  let popupHeading = document.querySelector('.popup__image-name');
-  popupImage.src = evt.target.src;
-  popupHeading.textContent = evt.target.alt;
-  document.querySelector('#imagePopup').classList.add('popup_opened');
-};
-
-//функция закрытия карточки с изображением
-function closeCard(){document.querySelector('#imagePopup').classList.remove('popup_opened');}
 
 //изменяем в форме название и ссылку и добавляем новую карточку по клику на сабмит//
 function cardFormSubmit (evt) {
