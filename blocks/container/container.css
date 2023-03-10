@@ -7,3 +7,9 @@
   column-gap: 17px;
 }
 
+@media (max-width: 897px){
+  .container {
+    justify-content: center;
+  }
+}
+

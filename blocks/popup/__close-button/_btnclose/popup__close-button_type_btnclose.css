@@ -1,0 +1,16 @@
+.popup__close-button_type_btnclose {
+  right: -850px;
+  top: -300px;
+  align-self: auto;
+}
+
+@media (max-width: 520px) {
+  .popup__close-button_type_btnclose {
+    position: relative;
+    right: -270px;
+    top: -190px;
+    width: 20px;
+    height: 20px;
+    background-image: url(../../../../images/Close-Icon-small.svg);
+  }
+}

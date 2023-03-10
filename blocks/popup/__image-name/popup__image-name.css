@@ -5,3 +5,12 @@
   line-height: 15px;
   margin: 10px, 0, 0, 0;
 }
+
+@media (max-width: 580px) {
+  .popup__image-name {
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-left: 32px;
+  }
+}
+   
