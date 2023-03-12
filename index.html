@@ -34,33 +34,33 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup_type_edit-profile">
     <div class="popup__container popup__container_type_popupform">
       <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
       <form class="popup__form" name="prfl">
-        <fieldset class="popup__input-container">
+        <div class="popup__input-container">
           <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Имя">
           <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Должность">
           <button type="submit" class="popup__submit">Сохранить</button>
-        </fieldset>
+        </div>
       </form>
     </div>
   </div>
-  <div id="addPopup" class="popup">
+  <div id="addPopup" class="popup popup_type_add-card">
     <div class="popup__container popup__container_type_popupform">
       <button id="closeAddPopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form id="addPopupForm" class="popup__form" name="prfl">
-        <fieldset class="popup__input-container">
+        <div class="popup__input-container">
           <input type="text" name="add-name" class="popup__input popup__input_info_name" placeholder="Название">
           <input type="text" name="add-link" class="popup__input popup__input_info_descript" placeholder="Ссылка на картинку">
           <button type="submit" class="popup__submit">Создать</button>
-        </fieldset>
+        </div>
       </form>
     </div>
   </div>
-  <div id="imagePopup" class="popup">
+  <div id="imagePopup" class="popup popup_type_zoom">
     <div class="popup__container popup__container_type_popupimage">
       <button id="closeImagePopup" type="button" class="popup__close-button popup__close-button_type_btnclose" aria-label="Закрыть попап"></button>
       <img class="popup__image">
@@ -70,41 +70,3 @@
   <script src="./scripts/index.js"></script>
 </body>
 </html>
-
-
- <!--<div class="container__element">
-        <img class="container__image" src="images/novosibirsk.jpg" alt="Новосибирск">
-        <div class="container__name-area">
-          <h2 class="container__element-name">Новосибирск</h2>
-          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
-        </div>
-      </div>
-      <div class="container__element">
-        <img class="container__image" src="images/sochi.jpg" alt="Сочи">
-        <div class="container__name-area">
-          <h2 class="container__element-name">Сочи</h2>
-          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
-        </div>
-      </div>
-      <div class="container__element">
-        <img class="container__image" src="images/stpetersburg.jpg" alt="Санкт-Петербург">
-        <div class="container__name-area">
-          <h2 class="container__element-name">Санкт-Петербург</h2>
-          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
-        </div>
-      </div>
-      <div class="container__element">
-        <img class="container__image" src="images/moscow.jpg" alt="Москва">
-        <div class="container__name-area">
-          <h2 class="container__element-name">Москва</h2>
-          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
-        </div>
-      </div>
-      <div class="container__element">
-        <img class="container__image" src="images/kaliningrad.jpg" alt="Калининград">
-        <div class="container__name-area">
-          <h2 class="container__element-name">Калиниград</h2>
-          <button type="button" class="container__button" aria-label="Поставить лайк"></button>
-        </div>
-      </div>
-    </section>-->
