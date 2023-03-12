@@ -23,7 +23,7 @@
     <template id="cardTemplate" class="container" aria-label="Фотографии">
       <div class="container__element">
         <button type="button" class="container__deletebtn" area-label="Удалить карточку"></button>
-        <img type="button" class="container__image">
+        <img type="button" id="containerImage" class="container__image">
         <div class="container__name-area">
           <h2 class="container__element-name"></h2>
           <button type="button" class="container__button" aria-label="Поставить лайк"></button>
@@ -38,7 +38,7 @@
     <div class="popup__container popup__container_type_popupform">
       <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <form class="popup__form" name="prfl">
+      <form class="popup__form popup__form_function_edit-profile" name="prfl">
         <div class="popup__input-container">
           <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Имя">
           <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Должность">
@@ -51,7 +51,7 @@
     <div class="popup__container popup__container_type_popupform">
       <button id="closeAddPopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Новое место</h2>
-      <form id="addPopupForm" class="popup__form" name="prfl">
+      <form id="addPopupForm" class="popup__form popup__form_function_create name="prfl">
         <div class="popup__input-container">
           <input type="text" name="add-name" class="popup__input popup__input_info_name" placeholder="Название">
           <input type="text" name="add-link" class="popup__input popup__input_info_descript" placeholder="Ссылка на картинку">
@@ -67,6 +67,7 @@
       <p class="popup__image-name"></p>
     </div>
   </div>
+  <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
 </html>

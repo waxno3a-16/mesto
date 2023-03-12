@@ -3,7 +3,7 @@ const popup = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const profileEditButton = document.querySelector('.profile__button_function_edit');
 const profileCloseEditButton = document.querySelector('.popup__close-button');
-const profilePopupForm = document.querySelector('.popup__form');
+const profilePopupForm = document.querySelector('.popup__form_function_edit-profile');
 const nameInput = document.querySelector('.popup__input_info_name');
 const jobInput = document.querySelector('.popup__input_info_descript');
 const userName = document.querySelector('.profile__name');
@@ -12,17 +12,19 @@ const userPosition = document.querySelector('.profile__descript');
 const popupCardAdd = document.querySelector('.popup_type_add-card');
 const buttonAddCard = document.querySelector('.profile__button_function_add-place');
 const buttonCloseAddCard = document.querySelector('#closeAddPopup');
-const cardAddForm = document.querySelector('#addPopupForm');
+const cardAddForm = document.querySelector('.popup__form_function_create');
 const cardNameInput = document.querySelector('#addPopupForm input[name="add-name"]');
 const cardLinkInput = document.querySelector('#addPopupForm input[name="add-link"]');
 
-const popupPicture = document.querySelector('.popup_type_zoom');
+const popupOpenedImage = document.querySelector('.popup_type_zoom');
+const popupImageClose = document.querySelector('#closeImagePopup');
 const popupImage = document.querySelector('.popup__image');
 const popupHeading = document.querySelector('.popup__image-name');
-const popupImageClose = document.querySelector('#closeImagePopup');
 
-//const cardTemplate = document.querySelector('#cardTemplate').content.querySelector('.container__element');
+const cardTemplate = document.querySelector('#cardTemplate').content.querySelector('.container__element');
+const cardsContainer = document.querySelector('.container');
 
+const closeButtons = document.querySelectorAll('.popup__close-button');
 
 //открываем любой попап
 function openPopup(popup){
@@ -36,23 +38,23 @@ buttonAddCard.addEventListener('click', () => openPopup(popupCardAdd));
 nameInput.value = userName.textContent;
 jobInput.value = userPosition.textContent;
 
-//закрываем любой попап
+
+//закрываем любой попап кликом по ближайшему крестику
 function closePopup(popup){
   popup.classList.remove('popup_opened');
 }
 
-//функция закрытия карточки с изображением
-function closeCard(){popupPicture.classList.remove('popup_opened');};
-
-profileCloseEditButton.addEventListener('click', () => closePopup(popup));
-buttonCloseAddCard.addEventListener('click', () => closePopup(popup));
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
 //изменяя текст в полях имя и должность, изменяется информация в профайле
 function profileEditFormSubmit (evt) {
   evt.preventDefault();
   userName.textContent = nameInput.value;
   userPosition.textContent = jobInput.value;
-  closePopup();
+  closePopup(popupProfile);
 }
 profilePopupForm.addEventListener('submit', profileEditFormSubmit);
 
@@ -64,42 +66,14 @@ function cardFormSubmit (evt) {
     alt: cardNameInput.value,
     link: cardLinkInput.value
   }, cardsContainer);
-  closePopupAdd();
+  evt.target.reset();
+  closePopup(popupCardAdd);
 }
 cardAddForm.addEventListener('submit', cardFormSubmit);
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-const cardsContainer = document.querySelector('.container');
-
 //выводим массив карточек-фотографий//
 const createCard = (card) => {
-  const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
+  const newCard = cardTemplate.cloneNode(true);
   const cardName = newCard.querySelector('.container__element-name');
   cardName.textContent = card.name;
   const cardImage = newCard.querySelector('.container__image');
@@ -114,12 +88,10 @@ const createCard = (card) => {
   const cardDeleteButton = newCard.querySelector('.container__deletebtn');
   cardDeleteButton.addEventListener('click', deleteCard);
   
-  //переменные для открытия и закрытия попапа с большим изображением
-  cardImage.addEventListener('click', () => openPopup(popupPicture));
+  //переменные для открытия и закрытия попапа с большим изображением 
+  cardImage.addEventListener('click', openCard);
+  cardImage.addEventListener('click', () => openPopup(popupOpenedImage));
   popupImageClose.addEventListener('click', closeCard);
-  popupImage.src = cardImage.src;
-  popupImage.setAttribute('alt', card.name)
-  popupHeading.textContent = cardImage.alt;
 
   return newCard;
 }
@@ -132,16 +104,17 @@ const renderCard = (card, cardsContainer) => {
 initialCards.forEach(data => {renderCard(data, cardsContainer);});
 
 //функция открытия карточки с изображением
-//function openCard(evt){
-  //popupImage.src = cardImage.src;
-  //popupHeading.textContent = evt.target.alt;
-//};
+function openCard(evt){
+  popupImage.src = evt.target.src;
+  popupHeading.textContent = evt.target.alt;
+  popupImage.alt = evt.target.alt;
+};
+
+//функция закрытия карточки с изображением
+function closeCard(){popupPicture.classList.remove('popup_opened');};
 
 //добавляем и убираем лайк к карточкам//
 function likeCard(evt){evt.target.closest('.container__button').classList.toggle('container__button_active');};
 
 //удаляем карточку по клику на корзину
 function deleteCard(evt){evt.target.closest('.container__element').remove();};
-
-
-//разобраться с открытием большой картинки
