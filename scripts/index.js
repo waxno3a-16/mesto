@@ -31,13 +31,14 @@ function openPopup(popup){
   popup.classList.add('popup_opened');
 }
 
-profileEditButton.addEventListener('click', () => openPopup(popupProfile));
+profileEditButton.addEventListener('click', () => openPopup(popupProfile), openProfilePopup());
 buttonAddCard.addEventListener('click', () => openPopup(popupCardAdd));
 
 //передаем значения имени и должности в профайле в форму попапа
-nameInput.value = userName.textContent;
-jobInput.value = userPosition.textContent;
-
+function openProfilePopup(){
+  nameInput.value = userName.textContent;
+  jobInput.value = userPosition.textContent;
+}
 
 //закрываем любой попап кликом по ближайшему крестику
 function closePopup(popup){
@@ -89,9 +90,7 @@ const createCard = (card) => {
   cardDeleteButton.addEventListener('click', deleteCard);
   
   //переменные для открытия и закрытия попапа с большим изображением 
-  cardImage.addEventListener('click', openCard);
-  cardImage.addEventListener('click', () => openPopup(popupOpenedImage));
-  popupImageClose.addEventListener('click', closeCard);
+  cardImage.addEventListener('click', () => openCard(card), () => openPopup(popupOpenedImage));
 
   return newCard;
 }
@@ -104,10 +103,11 @@ const renderCard = (card, cardsContainer) => {
 initialCards.forEach(data => {renderCard(data, cardsContainer);});
 
 //функция открытия карточки с изображением
-function openCard(evt){
-  popupImage.src = evt.target.src;
-  popupHeading.textContent = evt.target.alt;
-  popupImage.alt = evt.target.alt;
+function openCard(card){
+  popupImage.src = card.link;
+  popupHeading.textContent = card.name;
+  popupImage.alt = card.name;
+  openPopup(popupOpenedImage);
 };
 
 //функция закрытия карточки с изображением
