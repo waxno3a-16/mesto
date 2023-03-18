@@ -30,6 +30,7 @@ const closeOverlays = document.querySelectorAll('#popupOverlay');
 //функция открытия любого попапа
 function openPopup(popup){
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', esc);
 }
 
 profileEditButton.addEventListener('click', () => openPopup(popupProfile), openProfilePopup());
@@ -44,6 +45,7 @@ function openProfilePopup(){
 //функция закрытия любого попапа
 function closePopup(popup){
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', esc);
 }
 
 //перебираем массив "крестиков" и закрываем попап кликом по ближайшему крестику
@@ -58,7 +60,15 @@ closeOverlays.forEach(overlay => {
   overlay.addEventListener('click', () =>  closePopup(popup));
 });
 
-popup.addEventListener('click', () =>  closePopup(popup))
+//функция закрытия попапов на нажатие escape
+function esc (evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+
+//popup.addEventListener('click', () =>  closePopup(popup));  //---   кажется, это больше не нужно, но это не точно
 
 //изменяя текст в полях имя и должность, изменяется информация в профайле
 function profileEditFormSubmit (evt) {
