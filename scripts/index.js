@@ -25,8 +25,9 @@ const cardTemplate = document.querySelector('#cardTemplate').content.querySelect
 const cardsContainer = document.querySelector('.container');
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
+const closeOverlays = document.querySelectorAll('#popupOverlay');
 
-//открываем любой попап
+//функция открытия любого попапа
 function openPopup(popup){
   popup.classList.add('popup_opened');
 }
@@ -40,15 +41,24 @@ function openProfilePopup(){
   jobInput.value = userPosition.textContent;
 }
 
-//закрываем любой попап кликом по ближайшему крестику
+//функция закрытия любого попапа
 function closePopup(popup){
   popup.classList.remove('popup_opened');
 }
 
+//перебираем массив "крестиков" и закрываем попап кликом по ближайшему крестику
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+
+//перебираем массив оверлеев и закрываем попап кликом по ближайшему оверлею
+closeOverlays.forEach(overlay => {
+  const popup = overlay.closest('.popup');
+  overlay.addEventListener('click', () =>  closePopup(popup));
+});
+
+popup.addEventListener('click', () =>  closePopup(popup))
 
 //изменяя текст в полях имя и должность, изменяется информация в профайле
 function profileEditFormSubmit (evt) {
@@ -90,7 +100,7 @@ const createCard = (card) => {
   cardDeleteButton.addEventListener('click', deleteCard);
   
   //переменные для открытия и закрытия попапа с большим изображением 
-  cardImage.addEventListener('click', () => openCard(card), () => openPopup(popupOpenedImage));
+  cardImage.addEventListener('click', () => openCard(card));
 
   return newCard;
 }
