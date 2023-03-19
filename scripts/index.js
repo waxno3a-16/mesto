@@ -1,4 +1,5 @@
 const popup = document.querySelector('.popup');
+const allPopups = document.querySelectorAll('.popup');
 
 const popupProfile = document.querySelector('.popup_type_edit-profile');
 const profileEditButton = document.querySelector('.profile__button_function_edit');
@@ -25,7 +26,6 @@ const cardTemplate = document.querySelector('#cardTemplate').content.querySelect
 const cardsContainer = document.querySelector('.container');
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
-const closeOverlays = document.querySelectorAll('#popupOverlay');
 
 //функция открытия любого попапа
 function openPopup(popup){
@@ -54,11 +54,20 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-//перебираем массив оверлеев и закрываем попап кликом по ближайшему оверлею
-closeOverlays.forEach(overlay => {
-  const popup = overlay.closest('.popup');
-  overlay.addEventListener('click', () =>  closePopup(popup));
+allPopups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+      if(evt.target === popup){
+        closePopup(popup);
+    }
+  });
 });
+
+//перебираем массив оверлеев и закрываем попап кликом по ближайшему оверлею
+//closeOverlays.forEach(overlay => {
+  //const popup = overlay.closest('.popup');
+  //overlay.addEventListener('mousedown', () =>  closePopup(popup));
+//});
+
 
 //функция закрытия попапов на нажатие escape
 function esc (evt) {
