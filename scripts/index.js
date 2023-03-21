@@ -62,13 +62,6 @@ allPopups.forEach((popup) => {
   });
 });
 
-//перебираем массив оверлеев и закрываем попап кликом по ближайшему оверлею
-//closeOverlays.forEach(overlay => {
-  //const popup = overlay.closest('.popup');
-  //overlay.addEventListener('mousedown', () =>  closePopup(popup));
-//});
-
-
 //функция закрытия попапов на нажатие escape
 function esc (evt) {
   if (evt.key === 'Escape') {
@@ -77,7 +70,7 @@ function esc (evt) {
   }
 }
 
-//popup.addEventListener('click', () =>  closePopup(popup));  //---   кажется, это больше не нужно, но это не точно
+//popup.addEventListener('click', () =>  closePopup(popup));  //--- комент для себя: кажется, это больше не нужно, но это не точно
 
 //изменяя текст в полях имя и должность, изменяется информация в профайле
 function profileEditFormSubmit (evt) {

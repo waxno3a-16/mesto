@@ -34,32 +34,39 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
+<!-- попап редактирования профиля-->
   <div class="popup popup_type_edit-profile">
     <div class="popup__container popup__container_type_popupform">
       <button type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
-      <form class="popup__form popup__form_function_edit-profile" name="prfl">
+      <form class="popup__form popup__form_function_edit-profile" name="profile" novalidate>
         <div class="popup__input-container">
-          <input type="text" class="popup__input popup__input_info_name" name="nm" placeholder="Имя">
-          <input type="text" class="popup__input popup__input_info_descript" name="pstn" placeholder="Должность">
-          <button type="submit" class="popup__submit">Сохранить</button>
+          <input required type="text" class="popup__input popup__input_info_name" name="name" placeholder="Имя" minlength="2" maxlength="40">
+          <span class="popup__input-error popup__input-error_type_name"></span>
+          <input required type="text" class="popup__input popup__input_info_descript" name="position" placeholder="Должность" minlength="2" maxlength="200">
+          <span class="popup__input-error popup__input-error_type_position"></span>
+          <button teype="submit" class="popup__submit">Сохранить</button>
         </div>
       </form>
     </div>
   </div>
+<!-- попап добавления карточки-->
   <div class="popup popup_type_add-card">
     <div class="popup__container popup__container_type_popupform">
       <button id="closeAddPopup" type="button" class="popup__close-button" aria-label="Закрыть попап"></button>
       <h2 class="popup__heading">Новое место</h2>
-      <form id="addPopupForm" class="popup__form popup__form_function_create" name="prfl">
+      <form id="addPopupForm" class="popup__form popup__form_function_create" name="add-card" novalidate>
         <div class="popup__input-container">
-          <input type="text" name="add-name" class="popup__input popup__input_info_name" placeholder="Название">
-          <input type="text" name="add-link" class="popup__input popup__input_info_descript" placeholder="Ссылка на картинку">
+          <input required type="text" name="card-name" class="popup__input popup__input_info_name" placeholder="Название">
+          <span class="popup__input-error popup__input-error_type_name"></span>
+          <input required type="url" name="card-link" class="popup__input popup__input_info_descript" placeholder="Ссылка на картинку">
+          <span class="popup__input-error popup__input-error_type_link"></span>
           <button type="submit" class="popup__submit">Создать</button>
         </div>
       </form>
     </div>
   </div>
+<!-- попап открытой карточки-->
   <div class="popup popup_type_zoom">
     <div class="popup__container popup__container_type_popupimage">
       <button id="closeImagePopup" type="button" class="popup__close-button popup__close-button_type_btnclose" aria-label="Закрыть попап"></button>
@@ -67,6 +74,8 @@
       <p class="popup__image-name"></p>
     </div>
   </div>
+
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
