@@ -16,6 +16,7 @@ const buttonCloseAddCard = document.querySelector('#closeAddPopup');
 const cardAddForm = document.querySelector('.popup__form_function_create');
 const cardNameInput = document.querySelector('#addPopupForm input[name="card-name"]');
 const cardLinkInput = document.querySelector('#addPopupForm input[name="card-link"]');
+const buttonSubmitCard = document.querySelector('.popup__submit_function_create-card');
 
 const popupOpenedImage = document.querySelector('.popup_type_zoom');
 const popupImageClose = document.querySelector('#closeImagePopup');
@@ -92,7 +93,8 @@ function cardFormSubmit (evt) {
     alt: cardNameInput.value,
     link: cardLinkInput.value
   }, cardsContainer);
-  evt.target.reset();
+  disableButton(buttonSubmitCard);
+  cardAddForm.reset();
   closePopup(popupCardAdd);
 }
 cardAddForm.addEventListener('submit', cardFormSubmit);
