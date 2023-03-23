@@ -41,41 +41,42 @@ const checkInputValidity = (input, activeErrorClass, inputErrorClass, inputTypeE
 }
 
 const hasInvalidInput = (inputList) => {
-  return Array.from(inputList).some((input) => !input.validity.valid);
+  return inputList.some((input) => !input.validity.valid);
 }
 
-const toggleButtonState = (inputList, submitButtons, inactiveButtonClass) => {
-  submitButtons.forEach((submitButton) => {
+const toggleButtonState = (inputList, submitButton, inactiveButtonClass) => {
     if (hasInvalidInput(inputList)) {
       disableButton(submitButton, inactiveButtonClass);
     } else {
       enableButton(submitButton, inactiveButtonClass);
     }
-  });
 }
 
-const setEventListeners = (formList, inputList, inputErrorClass, activeErrorClass, inputTypeErrorClass, submitButton, inactiveButtonClass) => {
+const setEventListeners = (inputSelector, inputErrorClass, activeErrorClass, inputTypeErrorClass, submitButtonSelector, inactiveButtonClass) => {
   formList.forEach((form, input) => {
-    form.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      toggleButtonState (input, submitButtonSelector, inactiveButtonClass);
-    });
-  });
+    const inputList = Array.from(form.querySelectorAll(inputSelector));
+    const submitButton = form.querySelector(submitButtonSelector);
 
+    form.addEventListener('submit', (evt) => {
+      toggleButtonState (inputList, submitButton, inactiveButtonClass);
+    });
+  
   inputList.forEach((input) => {
-    input.addEventListener('input', (evt) => {
+    input.addEventListener('input', () => {
       checkInputValidity(input, activeErrorClass, inputErrorClass, inputTypeErrorClass);
       toggleButtonState (inputList, submitButton, inactiveButtonClass);
     });
   });
-}
+});
 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
-  const inputList = Array.from(document.querySelectorAll(config.inputSelector));
-  const submitButtons = Array.from(document.querySelectorAll(config.submitButtonSelector));
-
-  setEventListeners(formList, inputList, config.inputErrorClass, config.activeErrorClass, config.inputTypeErrorClass, submitButtons, config.inactiveButtonClass);
+  formList.forEach((form) => {
+    form.addEventListener('submit', () => {
+      toggleButtonState (inputList, submitButton, inactiveButtonClass);
+    });; 
+  });
+  setEventListeners(config.inputSelector, config.inputErrorClass, config.activeErrorClass, config.inputTypeErrorClass, config.submitButtonSelector, config.inactiveButtonClass);
 }
 
 enableValidation({
