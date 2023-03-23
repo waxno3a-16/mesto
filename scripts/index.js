@@ -14,8 +14,8 @@ const popupCardAdd = document.querySelector('.popup_type_add-card');
 const buttonAddCard = document.querySelector('.profile__button_function_add-place');
 const buttonCloseAddCard = document.querySelector('#closeAddPopup');
 const cardAddForm = document.querySelector('.popup__form_function_create');
-const cardNameInput = document.querySelector('#addPopupForm input[name="add-name"]');
-const cardLinkInput = document.querySelector('#addPopupForm input[name="add-link"]');
+const cardNameInput = document.querySelector('#addPopupForm input[name="card-name"]');
+const cardLinkInput = document.querySelector('#addPopupForm input[name="card-link"]');
 
 const popupOpenedImage = document.querySelector('.popup_type_zoom');
 const popupImageClose = document.querySelector('#closeImagePopup');
@@ -26,6 +26,7 @@ const cardTemplate = document.querySelector('#cardTemplate').content.querySelect
 const cardsContainer = document.querySelector('.container');
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
+
 
 //функция открытия любого попапа
 function openPopup(popup){
@@ -54,6 +55,8 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
+
+//закрываем попап кликом по оверлею
 allPopups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
       if(evt.target === popup){
