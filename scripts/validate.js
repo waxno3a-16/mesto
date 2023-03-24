@@ -23,7 +23,7 @@ const enableButton = (submitButton, inactiveButtonClass) => {
 }
 
 //функция проверяет валидность полей
-const checkInputValidity = (input, activeErrorClass, inputErrorClass, inputTypeErrorClass) => {
+const checkInputValidity = (input, activeErrorClass, inputErrorClass) => {
   const inputName = input.getAttribute('name');
   errorText = document.querySelector(`${inputName}`);
   errorText = input.nextElementSibling;
@@ -31,14 +31,12 @@ const checkInputValidity = (input, activeErrorClass, inputErrorClass, inputTypeE
   //если поля невалидны, то выводится ошибка
   if(!input.validity.valid) {
     input.classList.add(inputErrorClass);
-    input.classList.add(inputTypeErrorClass);
 
-    showInputError (errorText, input.validationMessage, activeErrorClass, inputTypeErrorClass);
+    showInputError (errorText, input.validationMessage, activeErrorClass);
   } else { //если поля невалидны, то выводится ошибка
     input.classList.remove(inputErrorClass);
-    input.classList.remove(inputTypeErrorClass);
     
-    hideInputError (errorText, activeErrorClass, inputTypeErrorClass);
+    hideInputError (errorText, activeErrorClass);
   }
 }
 
@@ -55,7 +53,7 @@ const toggleButtonState = (inputList, submitButton, inactiveButtonClass) => {
     }
 }
 
-const setEventListeners = (formList, inputSelector, inputErrorClass, activeErrorClass, inputTypeErrorClass, submitButtonSelector, inactiveButtonClass) => {
+const setEventListeners = (formList, inputSelector, inputErrorClass, activeErrorClass, submitButtonSelector, inactiveButtonClass) => {
   formList.forEach((form) => {
     const inputList = Array.from(form.querySelectorAll(inputSelector));
     const submitButton = form.querySelector(submitButtonSelector);
@@ -66,7 +64,7 @@ const setEventListeners = (formList, inputSelector, inputErrorClass, activeError
 
     inputList.forEach((input) => {
       input.addEventListener('input', () => {
-        checkInputValidity(input, activeErrorClass, inputErrorClass, inputTypeErrorClass);
+        checkInputValidity(input, activeErrorClass, inputErrorClass);
         toggleButtonState (inputList, submitButton, inactiveButtonClass);
       });
     });
@@ -76,8 +74,10 @@ const setEventListeners = (formList, inputSelector, inputErrorClass, activeError
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   
-  setEventListeners(formList, config.inputSelector, config.inputErrorClass, config.activeErrorClass, config.inputTypeErrorClass, config.submitButtonSelector, config.inactiveButtonClass);
+  setEventListeners(formList, config.inputSelector, config.inputErrorClass, config.activeErrorClass, config.submitButtonSelector, config.inactiveButtonClass);
 }
+
+
 
 enableValidation({
   formSelector: '.popup__form',
@@ -86,6 +86,5 @@ enableValidation({
   buttonSubmitCardSelector: '.popup__submit_function_create-card',
   inactiveButtonClass: 'popup__submit_inactive',
   inputErrorClass: 'popup__input-error',
-  activeErrorClass: 'popup__input-error_active',
-  inputTypeErrorClass: 'popup__input_type_error'
+  activeErrorClass: 'popup__input-error_active'
 });
