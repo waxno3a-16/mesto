@@ -1,13 +1,15 @@
 //функция показывает ошибку
-const showInputError = (errorText, validationMessage, activeErrorClass) => {
+const showInputError = (errorText, validationMessage, activeErrorClass, input, inputErrorClass) => {
   errorText.textContent = validationMessage;
   errorText.classList.add(activeErrorClass);
+  input.classList.add(inputErrorClass);
 }
 
 //функция скрывает ошибку
-const hideInputError = (errorText, activeErrorClass) => {
+const hideInputError = (errorText, activeErrorClass, input, inputErrorClass) => {
   errorText.classList.remove(activeErrorClass);
   errorText.textContent = '';
+  input.classList.remove(inputErrorClass);
 }
 
 //функция отключает кнопку ввода данных
@@ -30,13 +32,13 @@ const checkInputValidity = (input, activeErrorClass, inputErrorClass) => {
   
   //если поля невалидны, то выводится ошибка
   if(!input.validity.valid) {
-    input.classList.add(inputErrorClass);
+    //input.classList.add(inputErrorClass);
 
-    showInputError (errorText, input.validationMessage, activeErrorClass);
+    showInputError (errorText, input.validationMessage, activeErrorClass, input, inputErrorClass);
   } else { //если поля невалидны, то выводится ошибка
-    input.classList.remove(inputErrorClass);
+    //input.classList.remove(inputErrorClass);
     
-    hideInputError (errorText, activeErrorClass);
+    hideInputError (errorText, activeErrorClass, input, inputErrorClass);
   }
 }
 
@@ -79,12 +81,4 @@ const enableValidation = (config) => {
 
 
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit',
-  buttonSubmitCardSelector: '.popup__submit_function_create-card',
-  inactiveButtonClass: 'popup__submit_inactive',
-  inputErrorClass: 'popup__input-error',
-  activeErrorClass: 'popup__input-error_active'
-});
+enableValidation(validationConfig);

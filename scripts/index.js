@@ -87,18 +87,17 @@ function editProfileFormSubmit (evt) {
 profilePopupForm.addEventListener('submit', editProfileFormSubmit);
 
 //изменяем в форме название и ссылку и добавляем новую карточку по клику на сабмит
-function cardFormSubmit (evt) {
+function submitCardForm (evt) {
   evt.preventDefault();
   renderCard({
     name: cardNameInput.value,
     alt: cardNameInput.value,
     link: cardLinkInput.value
   }, cardsContainer);
-  //disableButton(buttonSubmitCard);
   cardAddForm.reset();
   closePopup(popupCardAdd);
 }
-cardAddForm.addEventListener('submit', cardFormSubmit);
+cardAddForm.addEventListener('submit', submitCardForm);
 
 //выводим массив карточек-фотографий//
 const createCard = (card) => {
