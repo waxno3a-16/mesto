@@ -55,6 +55,14 @@ const toggleButtonState = (inputList, submitButton, inactiveButtonClass) => {
     }
 }
 
+//const resetErrorForm = (inputErrorClass, errorText) => {
+  //const inputErrorList = Array.from(document.querySelectorAll(inputErrorClass));
+  //inputErrorList.forEach((inputError) => {
+    //inputError.classList.remove(inputErrorClass);
+   // errorText.textContent = '';
+  //})
+//}
+
 const setEventListeners = (formList, inputSelector, inputErrorClass, activeErrorClass, submitButtonSelector, inactiveButtonClass) => {
   formList.forEach((form) => {
     const inputList = Array.from(form.querySelectorAll(inputSelector));
