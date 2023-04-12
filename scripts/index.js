@@ -1,5 +1,7 @@
+import {Card} from './card.js';
+
 //функция открытия любого попапа
-function openPopup(popup){
+export function openPopup(popup){
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', esc);
 }
@@ -69,54 +71,11 @@ function submitCardForm (evt) {
 }
 cardAddForm.addEventListener('submit', submitCardForm);
 
-//создаем класс card для вывода карточек в дом
-class Card {
-  constructor(data, cardTemplate){
-    this._name = data.name;
-    this._alt = data.name;
-    this._link = data.link;
-    this._cardTemplate = cardTemplate;
-  }
-
-  //создаем шаблон и клонируем его, возвращаем новоую карточку
-  _getTemplate(){
-    const newCard = document.querySelector(this._cardTemplate).content.querySelector('.container__element').cloneNode(true);
-    return newCard;
-  }
-
-  //создаем карточку и возвращаем
-  createCard(){
-    this._element = this._getTemplate();
-
-    this._elementTitle = this._element.querySelector('.container__element-name');
-    this._elementImage = this._element.querySelector('.container__image');
-   
-    this._elementTitle.textContent = this._name;
-    this._elementImage.src = this._link;
-    this._elementImage.alt = this._name;
-
-    return this._element;
-  }
-}
-
-//перебираем массив карточек и вставляем в DOM
-initialCards.forEach((item) => {
+//функция вставки карточек в DOM
+function renderCard(item){
   const card = new Card(item, '#cardTemplate');
   const cardElement = card.createCard();
   document.querySelector('.container').prepend(cardElement);
-})
+}
 
-
-//функция открытия карточки с изображением
-function openCard(card){
-  popupImage.src = card.link;
-  popupHeading.textContent = card.name;
-  popupImage.alt = card.name;
-  openPopup(popupOpenedImage);
-};
-
-//добавляем и убираем лайк к карточкам//
-function likeCard(evt){evt.target.closest('.container__button').classList.toggle('container__button_active');};
-
-//удаляем карточку по клику на корзину
-function deleteCard(evt){evt.target.closest('.container__element').remove();};
+initialCards.forEach(item => {renderCard(item)})
