@@ -56,3 +56,5 @@ export class Card {
     this._elementDelete.addEventListener('click', () => {this._deleteCard()});
   }
 }
+
+//hghghgh
