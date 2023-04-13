@@ -1,4 +1,4 @@
-import {Card} from './card.js';
+import {Card} from './Card.js';
 
 //функция открытия любого попапа
 export function openPopup(popup){
