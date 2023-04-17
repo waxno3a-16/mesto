@@ -27,6 +27,7 @@ const cardsContainer = document.querySelector('.container');
 
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
+
 const validationConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
@@ -34,7 +35,7 @@ const validationConfig = {
     buttonSubmitCardSelector: '.popup__submit_function_create-card',
     inactiveButtonClass: 'popup__submit_inactive',
     inputErrorClass: 'popup__input-error',
-    activeErrorClass: 'popup__input-error_active'
+    activeErrorClass: 'popup__input-error_active',
 }
 
 const initialCards = [

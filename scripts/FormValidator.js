@@ -1,92 +1,81 @@
-//функция показывает ошибку
-const showInputError = (errorText, validationMessage, activeErrorClass, input, inputErrorClass) => {
-  errorText.textContent = validationMessage;
-  errorText.classList.add(activeErrorClass);
-  input.classList.add(inputErrorClass);
-}
+export class FormValidator {
+    constructor(validationConfig, formElement, inputError) {
+      this._validationConfig = validationConfig;
+      this._inputSelector = validationConfig.inputSelector;
+      this._submitButtonSelector = validationConfig.submitButtonSelector;
+      this._buttonSubmitCardSelector = validationConfig.buttonSubmitCardSelector;
+      this._inactiveButtonClass = validationConfig.inactiveButtonClass;
+      this._inputErrorClass = validationConfig.inputErrorClass;
+      this._activeErrorClass = validationConfig.activeErrorClass;
+      this._formSelector = validationConfig.formSelector;
+      
+      this._formElement = formElement;
+      this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+      this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
+    }
 
-//функция скрывает ошибку
-const hideInputError = (errorText, activeErrorClass, input, inputErrorClass) => {
-  errorText.classList.remove(activeErrorClass);
-  errorText.textContent = '';
-  input.classList.remove(inputErrorClass);
-}
-
-//функция отключает кнопку ввода данных
-const disableButton = (submitButton, inactiveButtonClass) => {
-  submitButton.classList.add(inactiveButtonClass);
-  submitButton.disabled = true;
-}
-
-//функция включает кнопку ввода данных
-const enableButton = (submitButton, inactiveButtonClass) => {
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disabled = false;
-}
-
-//функция проверяет валидность полей
-const checkInputValidity = (input, activeErrorClass, inputErrorClass) => {
-  const inputName = input.getAttribute('name');
-  errorText = document.querySelector(`${inputName}`);
-  errorText = input.nextElementSibling;
   
-  //если поля невалидны, то выводится ошибка
-  if(!input.validity.valid) {
-    //input.classList.add(inputErrorClass);
+    // метод показывает ошибку
+    _showInputError = (input, validationMessage) => {
+      const errorElement = input.nextElementSibling;
+      errorElement.textContent = validationMessage;
+      errorElement.classList.add(this._activeErrorClass);
+      input.classList.add(this._inputErrorClass);
+    }
+  
+     // метод скрывает ошибку
+    _hideInputError = (input) => {
+      const errorElement = input.nextElementSibling;
+      errorElement.classList.remove(this._activeErrorClass);
+      errorElement.textContent = '';
+      input.classList.remove(this._inputErrorClass);
+    } 
+  
+    //деактивируем кнопку сабмит
+   _disableButton = () => {
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.disabled = true;
+    }
+  
+    //активируем кнопку сабмит
+   _enableButton = () => {
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.disabled = false;
+    }
+  
+    //проверяем валидность полей
+    _checkInputValidity = (input) => {
+      //если поля невалидны, то выводится ошибка
+      if(!input.validity.valid) {
+        this._showInputError (input, input.validationMessage);
+      } else { //если поля валидны, то не выводится ошибка
+        this._hideInputError (input);
+      }
+    }
 
-    showInputError (errorText, input.validationMessage, activeErrorClass, input, inputErrorClass);
-  } else { //если поля невалидны, то выводится ошибка
-    //input.classList.remove(inputErrorClass);
-    
-    hideInputError (errorText, activeErrorClass, input, inputErrorClass);
-  }
-}
+    _hasInvalidInput = () => {
+      return this._inputList.some((input) => !input.validity.valid);
+    }
+  
+    _toggleButtonState = () => {
+      if (this._hasInvalidInput()) {
+        this._disableButton();
+      } else {
+        this._enableButton();
+        }
+    }
 
-const hasInvalidInput = (inputList) => {
-  return inputList.some((input) => !input.validity.valid);
-}
-
-//переключение кнопки ввода данных
-const toggleButtonState = (inputList, submitButton, inactiveButtonClass) => {
-    if (hasInvalidInput(inputList)) {
-      disableButton(submitButton, inactiveButtonClass);
-    } else {
-      enableButton(submitButton, inactiveButtonClass);
+    _setEventListeners = () => {
+      this._inputList.forEach((input) => {
+        input.addEventListener('input', () => {
+          this._checkInputValidity(input);
+          this._toggleButtonState()
+        });
+      });
+    }
+  
+    enableValidation(){
+      this._formElement.addEventListener('submit', (evt) => {evt.preventDefault();});
+      this._setEventListeners();
     }
 }
-
-//const resetErrorForm = (inputErrorClass, errorText) => {
-  //const inputErrorList = Array.from(document.querySelectorAll(inputErrorClass));
-  //inputErrorList.forEach((inputError) => {
-    //inputError.classList.remove(inputErrorClass);
-   // errorText.textContent = '';
-  //})
-//}
-
-const setEventListeners = (formList, inputSelector, inputErrorClass, activeErrorClass, submitButtonSelector, inactiveButtonClass) => {
-  formList.forEach((form) => {
-    const inputList = Array.from(form.querySelectorAll(inputSelector));
-    const submitButton = form.querySelector(submitButtonSelector);
-
-    form.addEventListener('submit', () => {
-      toggleButtonState (inputList, submitButton, inactiveButtonClass);
-    });
-
-    inputList.forEach((input) => {
-      input.addEventListener('input', () => {
-        checkInputValidity(input, activeErrorClass, inputErrorClass);
-        toggleButtonState (inputList, submitButton, inactiveButtonClass);
-      });
-    });
-  });
-}
-
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  
-  setEventListeners(formList, config.inputSelector, config.inputErrorClass, config.activeErrorClass, config.submitButtonSelector, config.inactiveButtonClass);
-}
-
-
-
-enableValidation(validationConfig);

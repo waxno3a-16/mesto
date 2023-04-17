@@ -7,6 +7,7 @@ export class Card {
     this._alt = data.name;
     this._link = data.link;
     this._cardTemplate = cardTemplate;
+    //this._popupImage = popupImage;
   }
   
   //создаем шаблон и клонируем его, возвращаем новоую карточку
@@ -57,4 +58,3 @@ export class Card {
   }
 }
 
-//hghghgh

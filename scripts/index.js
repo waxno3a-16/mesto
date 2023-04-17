@@ -1,10 +1,18 @@
 import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
+
 
 //функция открытия любого попапа
 export function openPopup(popup){
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', esc);
 }
+
+const formProfileValidator = new FormValidator(validationConfig, popupProfile);
+formProfileValidator.enableValidation();
+
+const formCardAddValidator = new FormValidator(validationConfig, popupCardAdd);
+formCardAddValidator.enableValidation();
 
 //передаем значения имени и должности в профайле в форму попапа
 function openProfilePopup(popup){
@@ -16,7 +24,7 @@ function openProfilePopup(popup){
 //открытие попапа "Новое место", при открытии попапа добавления карточки кнопка сабмита неактивна
 profileEditButton.addEventListener('click', () => openProfilePopup(popupProfile));
 buttonAddCard.addEventListener('click', () => {
-  disableButton(buttonSubmitCard, validationConfig.inactiveButtonClass);
+  formCardAddValidator._disableButton();
   openPopup(popupCardAdd);
 });
 
@@ -79,3 +87,8 @@ function renderCard(item){
 }
 
 initialCards.forEach(item => {renderCard(item)})
+
+
+
+
+
