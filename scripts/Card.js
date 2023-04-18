@@ -1,18 +1,16 @@
-import {openPopup} from './index.js';
-
 //создаем класс card для вывода карточек в дом
 export class Card {
-  constructor(data, cardTemplate){
+  constructor(data, cardTemplate, handleCardClick){
     this._name = data.name;
     this._alt = data.name;
     this._link = data.link;
-    this._cardTemplate = cardTemplate;
-    //this._popupImage = popupImage;
+    this._cardTemplateSelector = cardTemplate;
+    this._handleCardClick = handleCardClick;
   }
   
   //создаем шаблон и клонируем его, возвращаем новоую карточку
   _getTemplate(){
-    const newCard = document.querySelector(this._cardTemplate).content.querySelector('.container__element').cloneNode(true);
+    const newCard = document.querySelector(this._cardTemplateSelector).content.querySelector('.container__element').cloneNode(true);
     return newCard;
   }
   
@@ -34,13 +32,6 @@ export class Card {
     return this._element;
   }
   
-  _openCard(){
-    popupImage.src = this._link;
-    popupHeading.textContent = this._name;
-    popupImage.alt = this._name;
-    openPopup(popupOpenedImage);
-  };
-  
   _likeCard(){
     this._elementLike.classList.toggle('container__button_active');
   };
@@ -50,11 +41,11 @@ export class Card {
   };
   
   _setEventListeners(){
-    this._elementImage.addEventListener('click', () => {this._openCard()});
-  
     this._elementLike.addEventListener('click', () => {this._likeCard()});
   
     this._elementDelete.addEventListener('click', () => {this._deleteCard()});
+
+    this._elementImage.addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link)});
   }
 }
-

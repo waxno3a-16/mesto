@@ -1,11 +1,15 @@
+import {allPopups, popupProfile, profileEditButton, profilePopupForm, nameInput,
+  jobInput, userName, userPosition, popupCardAdd, buttonAddCard, cardAddForm,
+  cardNameInput, cardLinkInput, popupOpenedImage, popupImage, popupHeading, 
+  cardsContainer, closeButtons} from './elements.js';
+import {validationConfig, initialCards} from './constants.js'
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 
-
 //функция открытия любого попапа
-export function openPopup(popup){
+function openPopup(popup){
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', esc);
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 const formProfileValidator = new FormValidator(validationConfig, popupProfile);
@@ -21,17 +25,24 @@ function openProfilePopup(popup){
   openPopup(popup);
 }
 
+//открываем большую картинку по нажатию на карточку
+function openCard(name, link) {
+  popupImage.src = link;
+  popupHeading.textContent = name;
+  popupImage.alt = name;
+  openPopup(popupOpenedImage);
+};
+
 //открытие попапа "Новое место", при открытии попапа добавления карточки кнопка сабмита неактивна
 profileEditButton.addEventListener('click', () => openProfilePopup(popupProfile));
 buttonAddCard.addEventListener('click', () => {
-  formCardAddValidator._disableButton();
   openPopup(popupCardAdd);
 });
 
 //функция закрытия любого попапа
 function closePopup(popup){
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', esc);
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 //перебираем массив "крестиков" и закрываем попап кликом по ближайшему крестику
@@ -50,7 +61,7 @@ allPopups.forEach((popup) => {
 });
 
 //функция закрытия попапов на нажатие escape
-function esc (evt) {
+function closePopupByEsc (evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
@@ -80,15 +91,10 @@ function submitCardForm (evt) {
 cardAddForm.addEventListener('submit', submitCardForm);
 
 //функция вставки карточек в DOM
-function renderCard(item){
-  const card = new Card(item, '#cardTemplate');
+function renderCard(item, cardsContainer){
+  const card = new Card(item, '#cardTemplate', openCard);
   const cardElement = card.createCard();
-  document.querySelector('.container').prepend(cardElement);
+  cardsContainer.prepend(cardElement);
 }
 
-initialCards.forEach(item => {renderCard(item)})
-
-
-
-
-
+initialCards.forEach(item => {renderCard(item, cardsContainer)})
