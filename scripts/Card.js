@@ -1,10 +1,10 @@
 //создаем класс card для вывода карточек в дом
 export class Card {
-  constructor(data, cardTemplate, handleCardClick){
+  constructor(data, cardTemplateSelector, handleCardClick){
     this._name = data.name;
     this._alt = data.name;
     this._link = data.link;
-    this._cardTemplateSelector = cardTemplate;
+    this._cardTemplateSelector = cardTemplateSelector;
     this._handleCardClick = handleCardClick;
   }
   
