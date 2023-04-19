@@ -36,6 +36,7 @@ function openCard(name, link) {
 //открытие попапа "Новое место", при открытии попапа добавления карточки кнопка сабмита неактивна
 profileEditButton.addEventListener('click', () => openProfilePopup(popupProfile));
 buttonAddCard.addEventListener('click', () => {
+  formCardAddValidator.disableButton();
   openPopup(popupCardAdd);
 });
 
